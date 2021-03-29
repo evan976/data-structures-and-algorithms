@@ -1,6 +1,6 @@
 export class Stack {
   constructor() {
-    this.count = 0;
+    this.count = 0; // 记录栈的大小
     this.items = {};
   }
 
