@@ -1,2 +1,3 @@
-require('./stack/index');
-// require('./queue/index');
+// require('./stack');
+// require('./queue');
+require('./deque');
