@@ -55,3 +55,23 @@ export function defaultEquals(a, b) {
 - toString(): 返回表示整个链表的字符串
 
 ## 代码实现（`src/data-structures/linked-list`）
+
+## 双向链表
+双向链表和普通链表的区别在于，在链表中，一个节点只有链向下一个节点的链接；而在双向链表中，链接是双向的：一个链向下一个元素，另一个链向前一个元素，如下图所示。
+
+![image-doubly-linked-list](https://i.loli.net/2021/04/01/vD5ZtyEs3V14PqN.png)
+
+双向链表的特点：
+
+- 可以使用一个 head 和 一个 tail 分别指向头部和尾部的节点
+- 每个节点都由三部分组成，前一个节点的指针（prev）/ 保存的元素（value）/ 后一个节点的指针（next）
+- 双向链表的第一个节点的 prev 为 null
+- 双向链表的最后一个节点的 next 为 null
+
+双向链表提供了两种迭代的方法：从头到尾，或者从尾到头。我们也可以访问一个特定节点的下一个或前一个元素。为了实现这种行为，还需要追踪每个节点的前一个节点。所以除了 Node 类中的 element 和 next 属性，DoublyLinkedList 会使用一个特殊的节点，这个名为 DoublyNode 的节点有一个叫做 prev 的属性。DoublyNode 扩展了 Node 类，因此我们可以继承 element 和 next 属性。由于使用继承，我们需要在 DoublyNode 类的构造函数中调用 Node 的构造函数。
+
+> 在双向链表中，如果迭代时错过了要找的元素，就需要回到起点，重新开始迭代。这是双向链表的一个优势。
+
+### 在任意位置插入元素（`insert(element, position)`）
+
+向双向链表中插入一个新元素跟（单向）链表非常类似。区别在于，链表只要控制一个 next 指针，而双向链表则要同时控制 next 和 prev 着两个指针。
